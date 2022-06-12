@@ -12,7 +12,7 @@ def test(s: Session) -> None:
         "python",
         "-m",
         "pytest",
-        "--cov=sbml2dae",
+        "--cov=zettelwarrior",
         "--cov-report=html",
         "--cov-report=term",
         "tests",
@@ -43,4 +43,3 @@ def lint(s: Session) -> None:
 @session(venv_backend="none")
 def type_check(s: Session) -> None:
     s.run("mypy", "src", "tests", "noxfile.py")
-

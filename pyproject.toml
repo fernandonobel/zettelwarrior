@@ -35,6 +35,7 @@ pyproject-flake8 = "*"
 # Formatting.
 black = "*"
 isort = "*"
+types-PyYAML = "^6.0.8"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

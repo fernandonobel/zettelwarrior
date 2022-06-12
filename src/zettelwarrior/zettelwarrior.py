@@ -1,7 +1,11 @@
-import sys, os, yaml
+import os
+import sys
+
+import yaml
+
 
 def read_yaml_front_matter(filename):
-    project_dir = os.path.realpath('.')
+    project_dir = os.path.realpath(".")
     filepath = os.path.join(project_dir, filename)
 
     with open(filepath, "r") as f:
@@ -18,5 +22,6 @@ def main():
 
     print(data)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
