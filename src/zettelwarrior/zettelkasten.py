@@ -1,26 +1,24 @@
-import os
-import glob 
+import glob
 
 from tabulate import tabulate
 from zettelwarrior.zettel import Zettel
 
+
 class Zettelkasten:
-    """ Class for handling the main directory of Zettelkasten.
-    """
+    """Class for handling the main directory of Zettelkasten."""
 
     def __init__(self):
-        """ Init the Zettelkasten.
-        """
-    
-        self.path = '/home/nobel/Sync/Vault/zettelkasten/'
+        """Init the Zettelkasten."""
+
+        self.path = "/home/nobel/Sync/Vault/zettelkasten/"
         self.zettels = []
 
-        for filepath in glob.glob(self.path + '*-*.md'):
+        for filepath in glob.glob(self.path + "*-*.md"):
             zettel = Zettel()
             zettel.load(filepath)
 
             self.zettels.append(zettel)
-        
+
         for zettel in self.zettels:
             print(zettel.title)
 
@@ -40,7 +38,7 @@ class Zettelkasten:
             "Title",
             "Tags",
             "UUID",
-            ]
+        ]
 
         print()
         print(tabulate(table, headers))

@@ -1,15 +1,12 @@
-import os
+from tabulate import tabulate
 import yaml
 
-from tabulate import tabulate
 
 class Zettel:
-    """ Class for handling the data of a Zettel.
-    """
+    """Class for handling the data of a Zettel."""
 
     def __init__(self):
-        """ Init a Zettel
-        """
+        """Init a Zettel"""
 
         self.title = None
         self.uuid = None
@@ -21,11 +18,11 @@ class Zettel:
 
         front_matter = self.read_front_matter(filepath)
 
-        self.title = front_matter.get('title', None)
-        self.uuid = front_matter.get('uuid', None)
-        self.tags = front_matter.get('tags', None)
-        self.status = front_matter.get('status', None)
-        self.backlink = front_matter.get('backlink', None)
+        self.title = front_matter.get("title", None)
+        self.uuid = front_matter.get("uuid", None)
+        self.tags = front_matter.get("tags", None)
+        self.status = front_matter.get("status", None)
+        self.backlink = front_matter.get("backlink", None)
 
     def read_front_matter(self, filepath):
 
@@ -36,15 +33,15 @@ class Zettel:
         return result
 
     def __str__(self):
-        
+
         table = []
-        
-        table.append(['Title', self.title])
-        table.append(['UUID', self.uuid])
-        table.append(['Tags', self.tags])
-        table.append(['Status', self.status])
-        table.append(['Backlink', self.backlink])
-        
+
+        table.append(["Title", self.title])
+        table.append(["UUID", self.uuid])
+        table.append(["Tags", self.tags])
+        table.append(["Status", self.status])
+        table.append(["Backlink", self.backlink])
+
         result = tabulate(table, headers=["Name", "Value"])
 
         return result
