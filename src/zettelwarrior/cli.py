@@ -1,8 +1,8 @@
 import os
 import click
 
-from zettelwarrior.zettelwarrior import read_yaml_front_matter
 from zettelwarrior.zettel import Zettel
+from zettelwarrior.zettelkasten import Zettelkasten
 
 
 @click.group()
@@ -24,7 +24,14 @@ def information(filename):
     print()
     print(zettel)
     print()
-    
+
+@cli.command(short_help="List Zettels")
+def list():
+    """List Zettels"""
+
+    zettelkasten = Zettelkasten()
+    zettelkasten.list_all_zettels()
+
 
 def main():
     cli(obj={})

@@ -7,10 +7,10 @@ def test_read_yaml_front_matter():
 
     expected = {
         "title": "This is the title of the example note.",
-        "id": "220612-1235",
+        "uuid": "220612-1235",
         "tags": ["example-note", "test"],
-        "status": None,
-        "backlink": None,
+        "status": "done",
+        "backlink": "<[La metodología Zettelkasten](220610-1709)>",
     }
 
     assert result == expected

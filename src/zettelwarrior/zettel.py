@@ -10,7 +10,7 @@ class Zettel:
     def __init__(self):
         """ Init a Zettel
         """
-                
+
         self.title = None
         self.uuid = None
         self.tags = None
@@ -21,11 +21,11 @@ class Zettel:
 
         front_matter = self.read_front_matter(filepath)
 
-        self.title = front_matter['title']
-        self.uuid = front_matter['id']
-        self.tags = front_matter['tags']
-        self.status = front_matter['status']
-        self.backlink = front_matter['backlink']
+        self.title = front_matter.get('title', None)
+        self.uuid = front_matter.get('uuid', None)
+        self.tags = front_matter.get('tags', None)
+        self.status = front_matter.get('status', None)
+        self.backlink = front_matter.get('backlink', None)
 
     def read_front_matter(self, filepath):
 

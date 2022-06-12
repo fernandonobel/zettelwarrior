@@ -1,9 +1,9 @@
 ---
 title: This is the title of the example note.
-id: 220612-1235
+uuid: 220612-1235
 tags: [example-note, test]
-status: 
-backlink: 
+status: done
+backlink: <[La metodología Zettelkasten](220610-1709)>
 ---
 
 Here is the body of the example note.
