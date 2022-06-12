@@ -8,7 +8,7 @@ def test_read_yaml_front_matter():
     expected = {
         "title": "This is the title of the example note.",
         "id": "220612-1235",
-        "tags": None,
+        "tags": ["example-note", "test"],
         "status": None,
         "backlink": None,
     }

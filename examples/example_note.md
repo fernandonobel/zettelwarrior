@@ -1,7 +1,7 @@
 ---
 title: This is the title of the example note.
 id: 220612-1235
-tags: 
+tags: [example-note, test]
 status: 
 backlink: 
 ---
