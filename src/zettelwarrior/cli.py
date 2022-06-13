@@ -1,5 +1,4 @@
 import click
-
 import zettelwarrior
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
