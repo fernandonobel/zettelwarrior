@@ -48,7 +48,7 @@ class Zettelkasten:
         for zettel in self.zettels:
             for tag in zettel.tags:
                 if tag not in tags:
-                    tags[tag] = list()
+                    tags[tag] = []
                 tags[tag].append(None)
 
         table = []
@@ -60,13 +60,8 @@ class Zettelkasten:
 
             table.append(row)
 
-        headers = [
-            "Tag",
-            "Count"
-        ]
+        headers = ["Tag", "Count"]
 
         print()
         print(tabulate(table, headers))
         print()
-
-
