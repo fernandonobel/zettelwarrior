@@ -21,12 +21,20 @@ def information(filename):
     print()
 
 
-@cli.command(short_help="List Zettels")
+@cli.command(short_help="Show list of all Zettels")
 def list():
     """List Zettels"""
 
     zettelkasten = Zettelkasten()
     zettelkasten.list_all_zettels()
+
+
+@cli.command(short_help="Show list of all tags used")
+def tags():
+    """Show list of all tags used"""
+
+    zettelkasten = Zettelkasten()
+    zettelkasten.print_tags()
 
 
 def main():

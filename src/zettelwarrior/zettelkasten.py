@@ -19,9 +19,6 @@ class Zettelkasten:
 
             self.zettels.append(zettel)
 
-        for zettel in self.zettels:
-            print(zettel.title)
-
     def list_all_zettels(self):
 
         table = []
@@ -43,3 +40,33 @@ class Zettelkasten:
         print()
         print(tabulate(table, headers))
         print()
+
+    def print_tags(self):
+
+        tags = {}
+
+        for zettel in self.zettels:
+            for tag in zettel.tags:
+                if tag not in tags:
+                    tags[tag] = list()
+                tags[tag].append(None)
+
+        table = []
+
+        for tag in tags:
+            row = []
+            row.append(tag)
+            row.append(len(tags[tag]))
+
+            table.append(row)
+
+        headers = [
+            "Tag",
+            "Count"
+        ]
+
+        print()
+        print(tabulate(table, headers))
+        print()
+
+
