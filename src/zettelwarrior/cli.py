@@ -1,10 +1,14 @@
 import click
+
+import zettelwarrior
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
 
 
 @click.group()
-def cli():
+@click.version_option(zettelwarrior.__version__)
+@click.pass_context
+def cli(ctx):
     """ZettelWarrior Command Line Interface."""
 
 

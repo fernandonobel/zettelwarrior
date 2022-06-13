@@ -44,7 +44,7 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-zw = "zettelwarrior.cli:main"
+zettelwarrior = "zettelwarrior.cli:main"
 
 [tool.mypy]
 ignore_missing_imports = true
