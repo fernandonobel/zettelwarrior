@@ -11,7 +11,6 @@ def cli():
 @cli.command(short_help="Shows data and metadata of a Zettel")
 @click.argument("filename", type=click.Path(exists=True))
 def information(filename):
-    """Shows data and metadata of a Zettel."""
 
     zettel = Zettel()
     zettel.load(filename)
@@ -23,7 +22,6 @@ def information(filename):
 
 @cli.command(short_help="Show list of all Zettels")
 def list():
-    """List Zettels"""
 
     zettelkasten = Zettelkasten()
     zettelkasten.list_all_zettels()
@@ -31,10 +29,16 @@ def list():
 
 @cli.command(short_help="Show list of all tags used")
 def tags():
-    """Show list of all tags used"""
 
     zettelkasten = Zettelkasten()
     zettelkasten.print_tags()
+
+
+@cli.command(short_help="Add a new Zettel")
+def add():
+
+    zettelkasten = Zettelkasten()
+    zettelkasten.add_zettel()
 
 
 def main():

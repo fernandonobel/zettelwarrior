@@ -1,4 +1,6 @@
+import os
 import glob
+import datetime
 
 from tabulate import tabulate
 from zettelwarrior.zettel import Zettel
@@ -65,3 +67,35 @@ class Zettelkasten:
         print()
         print(tabulate(table, headers))
         print()
+
+    def add_zettel(self, title=None):
+        """Add a new zettel to the zettelkasten."""
+       
+        e = datetime.datetime.now()
+
+        uuid = ""        
+        uuid += f"{str(e.year)[-2:]}"
+        uuid += f"{e.month:02d}"
+        uuid += f"{e.day:02d}"
+        uuid += f"-"
+        uuid += f"{e.hour:02d}"
+        uuid += f"{e.minute:02d}"
+
+        filepath = self.path + uuid + ".md"
+
+        f = open(filepath, "x")
+
+        f.write("---\n")
+        f.write(f"title: \"{title}\"\n")
+        f.write(f"uuid: {uuid}\n")
+        f.write(f"tags: []\n")
+        f.write(f"status:\n")
+        f.write(f"backlink:\n")
+        f.write("---\n")
+        f.write("\n")
+        f.write("----\n")
+        f.close()
+
+        os.system(f"vim {filepath}")
+
+        print(f'Created Zettel with UUID: {uuid}')
