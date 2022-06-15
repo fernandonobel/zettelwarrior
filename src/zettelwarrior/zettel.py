@@ -14,6 +14,14 @@ class Zettel:
         self.status = None
         self.backlink = None
 
+    def read_front_matter(self, filepath):
+
+        with open(filepath, "r") as f:
+            # Make a dict from the first YAML block
+            result = next(yaml.load_all(f, Loader=yaml.FullLoader))
+
+        return result
+
     def load(self, filepath):
 
         front_matter = self.read_front_matter(filepath)
@@ -23,14 +31,6 @@ class Zettel:
         self.tags = front_matter.get("tags", None)
         self.status = front_matter.get("status", None)
         self.backlink = front_matter.get("backlink", None)
-
-    def read_front_matter(self, filepath):
-
-        with open(filepath, "r") as f:
-            # Make a dict from the first YAML block
-            result = next(yaml.load_all(f, Loader=yaml.FullLoader))
-
-        return result
 
     def __str__(self):
 
