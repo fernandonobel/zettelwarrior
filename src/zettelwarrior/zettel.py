@@ -62,7 +62,7 @@ class Zettel:
         if not self.tags == other.tags:
             return False
 
-        if not self.backlink == self. backlink:
+        if not self.backlink == self.backlink:
             return False
 
         return True

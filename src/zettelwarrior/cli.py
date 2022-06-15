@@ -7,6 +7,7 @@ from zettelwarrior.zettelkasten import Zettelkasten
 
 path = "/home/nobel/Sync/Vault/zettelkasten/"
 
+
 @click.group()
 @click.version_option(zettelwarrior.__version__)
 @click.pass_context

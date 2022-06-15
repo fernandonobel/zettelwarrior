@@ -27,6 +27,7 @@ def test_zettel_str():
 
     assert isinstance(str(zettel), str)
 
+
 def test_zettel_eq():
 
     z1 = Zettel()

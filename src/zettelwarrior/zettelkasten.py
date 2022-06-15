@@ -99,5 +99,5 @@ class Zettelkasten:
         f.write("\n")
         f.write("----\n")
         f.close()
-        
+
         return filepath, uuid
