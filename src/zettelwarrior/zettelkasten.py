@@ -72,18 +72,28 @@ class Zettelkasten:
         print(tabulate(table, headers))
         print()
 
+    def get_now(self):
+        return datetime.datetime.now()
+
+    def generate_new_uuid(self, now=None):
+
+        if now == None:
+            now = self.get_now()
+
+        result = ""
+        result += f"{str(now.year)[-2:]}"
+        result += f"{now.month:02d}"
+        result += f"{now.day:02d}"
+        result += "-"
+        result += f"{now.hour:02d}"
+        result += f"{now.minute:02d}"
+
+        return result
+
     def add_zettel(self, title=None):
         """Add a new zettel to the zettelkasten."""
 
-        e = datetime.datetime.now()
-
-        uuid = ""
-        uuid += f"{str(e.year)[-2:]}"
-        uuid += f"{e.month:02d}"
-        uuid += f"{e.day:02d}"
-        uuid += "-"
-        uuid += f"{e.hour:02d}"
-        uuid += f"{e.minute:02d}"
+        uuid = self.generate_new_uuid()
 
         filepath = self.path + uuid + ".md"
 

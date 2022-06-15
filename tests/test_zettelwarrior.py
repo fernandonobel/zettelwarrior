@@ -1,3 +1,5 @@
+import datetime
+
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
 
@@ -19,6 +21,15 @@ def test_tags():
 
     assert result == expected
 
+def test_new_uuid():
+
+    fake_now = datetime.datetime(2022, 6, 15, 20, 11, 55)
+    zettelkasten = Zettelkasten("./examples/")
+    result = zettelkasten.generate_new_uuid(fake_now)
+
+    expected = "220615-2011"
+
+    assert result == expected
 
 def test_add_zettel(tmpdir):
 
