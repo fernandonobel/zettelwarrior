@@ -100,7 +100,9 @@ class Zettelkasten:
         f.write("\n")
         f.write("----\n")
         f.close()
+        
+        return filepath, uuid
 
-        os.system(f"vim {filepath}")
+        #os.system(f"vim {filepath}")
 
-        print(f"Created Zettel with UUID: {uuid}")
+        #print(f"Created Zettel with UUID: {uuid}")
