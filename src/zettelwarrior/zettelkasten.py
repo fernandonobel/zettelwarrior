@@ -9,10 +9,10 @@ from zettelwarrior.zettel import Zettel
 class Zettelkasten:
     """Class for handling the main directory of Zettelkasten."""
 
-    def __init__(self):
+    def __init__(self, path):
         """Init the Zettelkasten."""
 
-        self.path = "/home/nobel/Sync/Vault/zettelkasten/"
+        self.path = path
         self.zettels = []
 
         for filepath in glob.glob(self.path + "*-*.md"):

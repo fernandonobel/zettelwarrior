@@ -45,3 +45,22 @@ class Zettel:
         result = tabulate(table, headers=["Name", "Value"])
 
         return result
+
+    def __eq__(self, other):
+
+        if not isinstance(other, Zettel):
+            return False
+
+        if not self.title == other.title:
+            return False
+
+        if not self.uuid == other.uuid:
+            return False
+
+        if not self.tags == other.tags:
+            return False
+
+        if not self.backlink == self. backlink:
+            return False
+
+        return True

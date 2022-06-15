@@ -3,6 +3,7 @@ import zettelwarrior
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
 
+zettelkasten_path = "/home/nobel/Sync/Vault/zettelkasten/"
 
 @click.group()
 @click.version_option(zettelwarrior.__version__)
