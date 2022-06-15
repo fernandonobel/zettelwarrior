@@ -43,16 +43,21 @@ class Zettelkasten:
         print(tabulate(table, headers))
         print()
 
-    def print_tags(self):
+    def tags(self):
 
-        tags = {}
+        result = {}
 
         for zettel in self.zettels:
             for tag in zettel.tags:
-                if tag not in tags:
-                    tags[tag] = []
-                tags[tag].append(None)
+                if tag not in result:
+                    result[tag] = []
+                result[tag].append(None)
 
+        return result
+
+    def print_tags(self):
+
+        tags = self.tags()
         table = []
 
         for tag in tags:

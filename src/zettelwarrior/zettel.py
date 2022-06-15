@@ -32,6 +32,8 @@ class Zettel:
         self.status = front_matter.get("status", None)
         self.backlink = front_matter.get("backlink", None)
 
+        return self
+
     def __str__(self):
 
         table = []

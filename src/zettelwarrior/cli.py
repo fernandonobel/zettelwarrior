@@ -3,7 +3,7 @@ import zettelwarrior
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
 
-zettelkasten_path = "/home/nobel/Sync/Vault/zettelkasten/"
+path = "/home/nobel/Sync/Vault/zettelkasten/"
 
 @click.group()
 @click.version_option(zettelwarrior.__version__)
@@ -27,21 +27,21 @@ def information(filename):
 @cli.command(short_help="Show list of all Zettels")
 def list():
 
-    zettelkasten = Zettelkasten()
+    zettelkasten = Zettelkasten(path)
     zettelkasten.list_all_zettels()
 
 
 @cli.command(short_help="Show list of all tags used")
 def tags():
 
-    zettelkasten = Zettelkasten()
+    zettelkasten = Zettelkasten(path)
     zettelkasten.print_tags()
 
 
 @cli.command(short_help="Add a new Zettel")
 def add():
 
-    zettelkasten = Zettelkasten()
+    zettelkasten = Zettelkasten(path)
     zettelkasten.add_zettel()
 
 
