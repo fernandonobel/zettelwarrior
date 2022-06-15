@@ -1,3 +1,5 @@
+import os
+
 import click
 import zettelwarrior
 from zettelwarrior.zettel import Zettel
@@ -42,7 +44,10 @@ def tags():
 def add():
 
     zettelkasten = Zettelkasten(path)
-    zettelkasten.add_zettel()
+    filepath, uuid = zettelkasten.add_zettel()
+
+    os.system(f"vim {filepath}")
+    print(f"Created Zettel with UUID: {uuid}")
 
 
 def main():

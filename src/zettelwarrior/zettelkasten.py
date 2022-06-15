@@ -1,6 +1,5 @@
 import datetime
 import glob
-import os
 
 from tabulate import tabulate
 from zettelwarrior.zettel import Zettel
@@ -102,7 +101,3 @@ class Zettelkasten:
         f.close()
         
         return filepath, uuid
-
-        #os.system(f"vim {filepath}")
-
-        #print(f"Created Zettel with UUID: {uuid}")
