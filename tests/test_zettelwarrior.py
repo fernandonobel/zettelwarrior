@@ -21,6 +21,7 @@ def test_tags():
 
     assert result == expected
 
+
 def test_new_uuid():
 
     fake_now = datetime.datetime(2022, 6, 15, 20, 11, 55)
@@ -30,6 +31,7 @@ def test_new_uuid():
     expected = "220615-2011"
 
     assert result == expected
+
 
 def test_add_zettel(tmpdir):
 

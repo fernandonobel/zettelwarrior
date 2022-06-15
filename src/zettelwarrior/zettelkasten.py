@@ -77,7 +77,7 @@ class Zettelkasten:
 
     def generate_new_uuid(self, now=None):
 
-        if now == None:
+        if now is None:
             now = self.get_now()
 
         result = ""
