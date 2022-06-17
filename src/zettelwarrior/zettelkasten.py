@@ -54,7 +54,7 @@ class Zettelkasten:
 
         return result
 
-    def generate_tags_index(self):
+    def generate_tag_index(self):
 
         file = open(self.path / "tags.md", "w")
 

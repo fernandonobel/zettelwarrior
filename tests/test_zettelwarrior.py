@@ -40,12 +40,12 @@ def test_tags():
     assert result == expected
 
 
-def test_generate_tags_index(tmp_zettelkasten_dir):
+def test_generate_tag_index(tmp_zettelkasten_dir):
 
     os.remove(tmp_zettelkasten_dir / "tags.md")
 
     zettelkasten = Zettelkasten(tmp_zettelkasten_dir)
-    zettelkasten.generate_tags_index()
+    zettelkasten.generate_tag_index()
 
     result = str(tmp_zettelkasten_dir / "tags.md")
     expected = "./examples/tags.md"
