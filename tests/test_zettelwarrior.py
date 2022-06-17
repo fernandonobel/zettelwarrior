@@ -10,7 +10,6 @@ def zettelkasten_path(tmpdir):
 
     result = str(tmpdir)
     copy_tree("./examples/", result)
-    result += "/"
 
     return result
 

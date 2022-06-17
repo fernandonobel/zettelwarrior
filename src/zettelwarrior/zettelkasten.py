@@ -1,5 +1,6 @@
 import datetime
 import glob
+from pathlib import Path
 
 from tabulate import tabulate
 from zettelwarrior.zettel import Zettel
@@ -11,10 +12,10 @@ class Zettelkasten:
     def __init__(self, path):
         """Init the Zettelkasten."""
 
-        self.path = path
+        self.path = Path(path)
         self.zettels = []
 
-        for filepath in glob.glob(self.path + "*-*.md"):
+        for filepath in self.path.glob("*-*.md"):
             zettel = Zettel()
             zettel.load(filepath)
 
@@ -95,7 +96,9 @@ class Zettelkasten:
 
         uuid = self.generate_new_uuid()
 
-        filepath = self.path + uuid + ".md"
+        filename = uuid + ".md"
+
+        filepath = self.path / filename
 
         f = open(filepath, "x")
 
