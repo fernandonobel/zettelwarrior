@@ -53,7 +53,6 @@ class Zettelkasten:
                 result[tag].append(zettel)
 
         return result
-    
 
     def generate_tags_index(self):
 
@@ -70,11 +69,10 @@ class Zettelkasten:
 
             for zettel in tags[tag]:
                 file.write(f"* [{zettel.title}]({zettel.uuid})\n")
-            
+
             file.write("\n")
 
         file.close()
-
 
     def print_tags(self):
 

@@ -1,8 +1,8 @@
-import os
 import datetime
 from distutils.dir_util import copy_tree
-from pathlib import Path
 import filecmp
+import os
+from pathlib import Path
 
 import pytest
 from zettelwarrior.zettel import Zettel
@@ -31,11 +31,14 @@ def test_tags():
 
     zettelkasten = Zettelkasten("./examples/")
     result = zettelkasten.tags()
-    
-    
-    expected = {"example-note": [Zettel().load("./examples/220612-1235.md")], "test": [Zettel().load("./examples/220612-1235.md")]}
+
+    expected = {
+        "example-note": [Zettel().load("./examples/220612-1235.md")],
+        "test": [Zettel().load("./examples/220612-1235.md")],
+    }
 
     assert result == expected
+
 
 def test_generate_tags_index(tmp_zettelkasten_dir):
 
@@ -48,6 +51,7 @@ def test_generate_tags_index(tmp_zettelkasten_dir):
     expected = "./examples/tags.md"
 
     assert filecmp.cmp(result, expected)
+
 
 def test_new_uuid():
 
