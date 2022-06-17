@@ -27,12 +27,15 @@ def test_zettelkasten(tmp_zettelkasten_dir):
     assert zettelkasten.zettels == expected
 
 
-#def test_tags():
-#
-#    zettelkasten = Zettelkasten("./examples/")
-#    result = zettelkasten.tags()
-#    expected = {"example-note": [None], "test": [None]}
-#    assert result == expected
+def test_tags():
+
+    zettelkasten = Zettelkasten("./examples/")
+    result = zettelkasten.tags()
+    
+    
+    expected = {"example-note": [Zettel().load("./examples/220612-1235.md")], "test": [Zettel().load("./examples/220612-1235.md")]}
+
+    assert result == expected
 
 def test_generate_tags_index(tmp_zettelkasten_dir):
 
