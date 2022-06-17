@@ -1,10 +1,11 @@
 import datetime
 from distutils.dir_util import copy_tree
-import pytest
 from pathlib import Path
 
+import pytest
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
+
 
 @pytest.fixture
 def tmp_zettelkasten_dir(tmpdir):
