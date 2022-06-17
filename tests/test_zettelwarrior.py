@@ -2,6 +2,7 @@ import os
 import datetime
 from distutils.dir_util import copy_tree
 from pathlib import Path
+import filecmp
 
 import pytest
 from zettelwarrior.zettel import Zettel
@@ -26,24 +27,24 @@ def test_zettelkasten(tmp_zettelkasten_dir):
     assert zettelkasten.zettels == expected
 
 
-def test_tags():
+#def test_tags():
+#
+#    zettelkasten = Zettelkasten("./examples/")
+#    result = zettelkasten.tags()
+#    expected = {"example-note": [None], "test": [None]}
+#    assert result == expected
 
-    zettelkasten = Zettelkasten("./examples/")
-    result = zettelkasten.tags()
-    expected = {"example-note": [None], "test": [None]}
-    assert result == expected
-
-def test_generate_tags_file(tmp_zettelkasten_dir):
+def test_generate_tags_index(tmp_zettelkasten_dir):
 
     os.remove(tmp_zettelkasten_dir / "tags.md")
 
     zettelkasten = Zettelkasten(tmp_zettelkasten_dir)
-    zettelkasten.generate_tags_file()
-    result = open(tmp_zettelkasten_dir / "tags.md", "r").read()
+    zettelkasten.generate_tags_index()
 
-    expected = open("./examples/tags.md", "r").read()
+    result = str(tmp_zettelkasten_dir / "tags.md")
+    expected = "./examples/tags.md"
 
-    assert result == expected
+    assert filecmp.cmp(result, expected)
 
 def test_new_uuid():
 

@@ -50,9 +50,31 @@ class Zettelkasten:
             for tag in zettel.tags:
                 if tag not in result:
                     result[tag] = []
-                result[tag].append(None)
+                result[tag].append(zettel)
 
         return result
+    
+
+    def generate_tags_index(self):
+
+        file = open(self.path / "tags.md", "w")
+
+        file.write("# Tags\n")
+        file.write("\n")
+
+        tags = self.tags()
+
+        for tag in tags:
+            file.write(f"## {tag}\n")
+            file.write("\n")
+
+            for zettel in tags[tag]:
+                file.write(f"* [{zettel.title}]({zettel.uuid})\n")
+            
+            file.write("\n")
+
+        file.close()
+
 
     def print_tags(self):
 
