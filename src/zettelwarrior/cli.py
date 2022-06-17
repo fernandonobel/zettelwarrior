@@ -50,6 +50,13 @@ def add():
     os.system(f"vim {filepath}")
     print(f"Created Zettel with UUID: {uuid}")
 
+@cli.command(short_help="Generate tags index file")
+def generate_tags_index():
+
+    zettelkasten = Zettelkasten(path)
+    zettelkasten.generate_tags_index()
+
+    print("Generated tags index file: ./tags.md")
 
 def main():
     cli(obj={})
