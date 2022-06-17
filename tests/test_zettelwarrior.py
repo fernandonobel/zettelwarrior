@@ -1,3 +1,4 @@
+import os
 import datetime
 from distutils.dir_util import copy_tree
 from pathlib import Path
@@ -32,6 +33,17 @@ def test_tags():
     expected = {"example-note": [None], "test": [None]}
     assert result == expected
 
+def test_generate_tags_file(tmp_zettelkasten_dir):
+
+    os.remove(tmp_zettelkasten_dir / "tags.md")
+
+    zettelkasten = Zettelkasten(tmp_zettelkasten_dir)
+    zettelkasten.generate_tags_file()
+    result = open(tmp_zettelkasten_dir / "tags.md", "r").read()
+
+    expected = open("./examples/tags.md", "r").read()
+
+    assert result == expected
 
 def test_new_uuid():
 
