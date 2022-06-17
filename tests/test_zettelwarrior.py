@@ -7,22 +7,30 @@ from zettelwarrior.zettelkasten import Zettelkasten
 
 @pytest.fixture
 def zettelkasten_path(tmpdir):
+
     result = str(tmpdir)
     copy_tree("./examples/", result)
     result += "/"
+
     return result
 
 
 def test_zettelkasten(zettelkasten_path):
+
     zettelkasten = Zettelkasten(zettelkasten_path)
+
     expected = [Zettel().load("./examples/220612-1235.md")]
+
     assert zettelkasten.zettels == expected
 
 
 def test_tags():
+
     zettelkasten = Zettelkasten("./examples/")
     result = zettelkasten.tags()
+
     expected = {"example-note": [None], "test": [None]}
+
     assert result == expected
 
 
@@ -41,7 +49,6 @@ def test_add_zettel(tmpdir):
 
     zettelkasten = Zettelkasten(str(tmpdir))
     filepath, uuid = zettelkasten.add_zettel()
-
     result = Zettel().load(filepath)
 
     expected = Zettel()
