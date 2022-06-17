@@ -1,4 +1,5 @@
 import os
+import pkg_resources
 
 import click
 import zettelwarrior
@@ -9,7 +10,7 @@ path = "/home/nobel/Sync/Vault/zettelkasten/"
 
 
 @click.group()
-@click.version_option(zettelwarrior.__version__)
+@click.version_option(pkg_resources.get_distribution("zettelwarrior").version)
 @click.pass_context
 def cli(ctx):
     """ZettelWarrior Command Line Interface."""
