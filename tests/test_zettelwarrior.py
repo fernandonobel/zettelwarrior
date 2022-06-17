@@ -1,6 +1,7 @@
 import datetime
 from distutils.dir_util import copy_tree
 import pytest
+from pathlib import Path
 
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
@@ -8,10 +9,15 @@ from zettelwarrior.zettelkasten import Zettelkasten
 @pytest.fixture
 def zettelkasten_path(tmpdir):
 
-    result = str(tmpdir)
-    copy_tree("./examples/", result)
+    result = Path(tmpdir)
+
+    copy_example_files_into(result)
 
     return result
+
+def copy_example_files_into(path):
+
+    copy_tree("./examples/", str(path))
 
 
 def test_zettelkasten(zettelkasten_path):
