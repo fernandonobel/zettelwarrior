@@ -10,7 +10,7 @@ clean:
 
 install:
 	poetry build
-	pip3.7 install ./dist/zettelwarrior-0.2.0-py3-none-any.whl
+	pip3.7 install ./dist/zettelwarrior-0.2.0-py3-none-any.whl --user
 
 .PHONY: test lint clean
 
