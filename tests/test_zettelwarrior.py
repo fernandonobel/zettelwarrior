@@ -76,3 +76,27 @@ def test_add_zettel(tmpdir):
     expected.backlink = None
 
     assert result == expected
+
+
+def test_generate_multiple_uuid_at_same_time(tmpdir):
+
+    fake_now = datetime.datetime(2022, 6, 15, 20, 11, 55)
+    zettelkasten = Zettelkasten(str(tmpdir))
+
+    result = []
+
+    filepath, uuid = zettelkasten.add_zettel(None, fake_now)
+    result.append(uuid)
+
+    filepath, uuid = zettelkasten.add_zettel(None, fake_now)
+    result.append(uuid)
+
+    filepath, uuid = zettelkasten.add_zettel(None, fake_now)
+    result.append(uuid)
+
+    expected = []
+    expected.append("220615-2011")
+    expected.append("220615-2011a")
+    expected.append("220615-2011b")
+
+    assert result == expected
