@@ -100,23 +100,37 @@ class Zettelkasten:
         if now is None:
             now = self.get_now()
 
-        result = ""
-        result += f"{str(now.year)[-2:]}"
-        result += f"{now.month:02d}"
-        result += f"{now.day:02d}"
-        result += "-"
-        result += f"{now.hour:02d}"
-        result += f"{now.minute:02d}"
+        base_uuid = ""
+        base_uuid += f"{str(now.year)[-2:]}"
+        base_uuid += f"{now.month:02d}"
+        base_uuid += f"{now.day:02d}"
+        base_uuid += "-"
+        base_uuid += f"{now.hour:02d}"
+        base_uuid += f"{now.minute:02d}"
+
+        result = base_uuid
+
+        i = 0
+
+        while self.is_uuid_already_used(result):
+            result = base_uuid + chr(ord('a') + i)
+            i += 1
 
         return result
 
-    def add_zettel(self, title=None):
-        """Add a new zettel to the zettelkasten."""
-
-        uuid = self.generate_new_uuid()
+    def is_uuid_already_used(self, uuid):
 
         filename = uuid + ".md"
+        filepath = self.path / filename
+        result = filepath.is_file()
 
+        return result
+
+    def add_zettel(self, title=None, now=None):
+        """Add a new zettel to the zettelkasten."""
+
+        uuid = self.generate_new_uuid(now)
+        filename = uuid + ".md"
         filepath = self.path / filename
 
         f = open(filepath, "x")
