@@ -113,7 +113,7 @@ class Zettelkasten:
         i = 0
 
         while self.is_uuid_already_used(result):
-            result = base_uuid + chr(ord('a') + i)
+            result = base_uuid + chr(ord("a") + i)
             i += 1
 
         return result

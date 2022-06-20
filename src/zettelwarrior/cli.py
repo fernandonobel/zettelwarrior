@@ -1,8 +1,7 @@
 import os
-import pkg_resources
 
 import click
-import zettelwarrior
+import pkg_resources
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
 
@@ -51,6 +50,7 @@ def add():
     os.system(f"vim {filepath}")
     print(f"Created Zettel with UUID: {uuid}")
 
+
 @cli.command(short_help="Generate tag index file")
 def generate_tag_index():
 
@@ -58,6 +58,7 @@ def generate_tag_index():
     zettelkasten.generate_tag_index()
 
     print("Generated tag index file: ./tags.md")
+
 
 def main():
     cli(obj={})

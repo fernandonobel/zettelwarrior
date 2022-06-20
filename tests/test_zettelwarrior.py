@@ -77,11 +77,12 @@ def test_add_zettel(tmpdir):
 
     assert result == expected
 
+
 def test_generate_multiple_uuid_at_same_time(tmpdir):
 
     fake_now = datetime.datetime(2022, 6, 15, 20, 11, 55)
     zettelkasten = Zettelkasten(str(tmpdir))
-    
+
     result = []
 
     filepath, uuid = zettelkasten.add_zettel(None, fake_now)
