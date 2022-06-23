@@ -1,9 +1,7 @@
 import datetime
-from pathlib import Path
 
 from tabulate import tabulate
 from zettelwarrior.zettel import Zettel
-from zettelwarrior.config import Config
 
 
 class Zettelkasten:

@@ -5,9 +5,9 @@ import os
 from pathlib import Path
 
 import pytest
+from zettelwarrior.config import Config
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
-from zettelwarrior.config import Config
 
 
 @pytest.fixture
@@ -81,7 +81,7 @@ def test_add_zettel(tmpdir):
 
     config = Config()
     config.path = Path(tmpdir)
-    
+
     zettelkasten = Zettelkasten(config)
     filepath, uuid = zettelkasten.add_zettel()
     result = Zettel().load(filepath)

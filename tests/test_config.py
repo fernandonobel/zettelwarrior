@@ -1,11 +1,14 @@
 from pathlib import Path
+
 from zettelwarrior.config import Config
+
 
 def test_config():
 
     config = Config()
 
     assert isinstance(config, Config)
+
 
 def test_load_user_config():
 
@@ -16,6 +19,7 @@ def test_load_user_config():
     expected.path = Path("/home/nobel/Sync/zettelkasten")
 
     assert result == expected
+
 
 def test_load_config_file(tmpdir):
 

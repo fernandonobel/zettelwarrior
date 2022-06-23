@@ -2,12 +2,13 @@ import os
 
 import click
 import pkg_resources
+from zettelwarrior.config import Config
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
-from zettelwarrior.config import Config
 
 config = Config()
 config.load_user_config()
+
 
 @click.group()
 @click.version_option(pkg_resources.get_distribution("zettelwarrior").version)
