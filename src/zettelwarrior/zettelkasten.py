@@ -1,5 +1,4 @@
 import datetime
-from pathlib import Path
 
 from tabulate import tabulate
 from zettelwarrior.zettel import Zettel
@@ -8,13 +7,13 @@ from zettelwarrior.zettel import Zettel
 class Zettelkasten:
     """Class for handling the main directory of Zettelkasten."""
 
-    def __init__(self, path):
+    def __init__(self, config):
         """Init the Zettelkasten."""
 
-        self.path = Path(path)
+        self.config = config
         self.zettels = []
 
-        for filepath in self.path.glob("*-*.md"):
+        for filepath in self.config.path.glob("*-*.md"):
             zettel = Zettel()
             zettel.load(filepath)
 
@@ -56,7 +55,7 @@ class Zettelkasten:
 
     def generate_tag_index(self):
 
-        file = open(self.path / "tags.md", "w")
+        file = open(self.config.path / "tags.md", "w")
 
         file.write("# Tags\n")
         file.write("\n")
@@ -121,7 +120,7 @@ class Zettelkasten:
     def is_uuid_already_used(self, uuid):
 
         filename = uuid + ".md"
-        filepath = self.path / filename
+        filepath = self.config.path / filename
         result = filepath.is_file()
 
         return result
@@ -131,7 +130,7 @@ class Zettelkasten:
 
         uuid = self.generate_new_uuid(now)
         filename = uuid + ".md"
-        filepath = self.path / filename
+        filepath = self.config.path / filename
 
         f = open(filepath, "x")
 

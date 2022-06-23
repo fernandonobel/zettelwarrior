@@ -2,10 +2,12 @@ import os
 
 import click
 import pkg_resources
+from zettelwarrior.config import Config
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
 
-path = "/home/nobel/Sync/Vault/zettelkasten/"
+config = Config()
+config.load_user_config()
 
 
 @click.group()
@@ -30,21 +32,21 @@ def information(filename):
 @cli.command(short_help="Show list of all Zettels")
 def list():
 
-    zettelkasten = Zettelkasten(path)
+    zettelkasten = Zettelkasten(config)
     zettelkasten.list_all_zettels()
 
 
 @cli.command(short_help="Show list of all tags used")
 def tags():
 
-    zettelkasten = Zettelkasten(path)
+    zettelkasten = Zettelkasten(config)
     zettelkasten.print_tags()
 
 
 @cli.command(short_help="Add a new Zettel")
 def add():
 
-    zettelkasten = Zettelkasten(path)
+    zettelkasten = Zettelkasten(config)
     filepath, uuid = zettelkasten.add_zettel()
 
     os.system(f"vim {filepath}")
@@ -54,7 +56,7 @@ def add():
 @cli.command(short_help="Generate tag index file")
 def generate_tag_index():
 
-    zettelkasten = Zettelkasten(path)
+    zettelkasten = Zettelkasten(config)
     zettelkasten.generate_tag_index()
 
     print("Generated tag index file: ./tags.md")

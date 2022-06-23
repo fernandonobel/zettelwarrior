@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 
 import pytest
+from zettelwarrior.config import Config
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
 
@@ -21,15 +22,22 @@ def copy_example_files_into(path):
 
 
 def test_zettelkasten(tmp_zettelkasten_dir):
+    config = Config()
+    config.path = Path(tmp_zettelkasten_dir)
+    zettelkasten = Zettelkasten(config)
+    result = zettelkasten.zettels
 
-    zettelkasten = Zettelkasten(tmp_zettelkasten_dir)
     expected = [Zettel().load("./examples/220612-1235.md")]
-    assert zettelkasten.zettels == expected
+
+    assert result == expected
 
 
 def test_tags():
 
-    zettelkasten = Zettelkasten("./examples/")
+    config = Config()
+    config.load_config_file("./examples/.zwrc")
+
+    zettelkasten = Zettelkasten(config)
     result = zettelkasten.tags()
 
     expected = {
@@ -44,7 +52,10 @@ def test_generate_tag_index(tmp_zettelkasten_dir):
 
     os.remove(tmp_zettelkasten_dir / "tags.md")
 
-    zettelkasten = Zettelkasten(tmp_zettelkasten_dir)
+    config = Config()
+    config.path = Path(tmp_zettelkasten_dir)
+
+    zettelkasten = Zettelkasten(config)
     zettelkasten.generate_tag_index()
 
     result = str(tmp_zettelkasten_dir / "tags.md")
@@ -56,7 +67,11 @@ def test_generate_tag_index(tmp_zettelkasten_dir):
 def test_new_uuid():
 
     fake_now = datetime.datetime(2022, 6, 15, 20, 11, 55)
-    zettelkasten = Zettelkasten("./examples/")
+
+    config = Config()
+    config.load_config_file("./examples/.zwrc")
+
+    zettelkasten = Zettelkasten(config)
     result = zettelkasten.generate_new_uuid(fake_now)
     expected = "220615-2011"
     assert result == expected
@@ -64,7 +79,10 @@ def test_new_uuid():
 
 def test_add_zettel(tmpdir):
 
-    zettelkasten = Zettelkasten(str(tmpdir))
+    config = Config()
+    config.path = Path(tmpdir)
+
+    zettelkasten = Zettelkasten(config)
     filepath, uuid = zettelkasten.add_zettel()
     result = Zettel().load(filepath)
 
@@ -80,8 +98,12 @@ def test_add_zettel(tmpdir):
 
 def test_generate_multiple_uuid_at_same_time(tmpdir):
 
+    config = Config()
+    config.path = Path(tmpdir)
+
     fake_now = datetime.datetime(2022, 6, 15, 20, 11, 55)
-    zettelkasten = Zettelkasten(str(tmpdir))
+
+    zettelkasten = Zettelkasten(config)
 
     result = []
 
