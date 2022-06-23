@@ -5,7 +5,7 @@ import pkg_resources
 from zettelwarrior.zettel import Zettel
 from zettelwarrior.zettelkasten import Zettelkasten
 
-path = "/home/nobel/Sync/Vault/zettelkasten/"
+path = "/home/nobel/Sync/zettelkasten/"
 
 
 @click.group()
